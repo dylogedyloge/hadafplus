@@ -13,7 +13,7 @@ const EditDomainDrawer = ({
 }) => {
   return (
     <Drawer
-      title="Edit Domain"
+      title="Edit domain"
       placement="right"
       onClose={onClose}
       open={visible}
@@ -21,8 +21,8 @@ const EditDomainDrawer = ({
       footer={
         <div style={{ textAlign: 'right' }}>
           <Space>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button 
+            <Button className='rounded-sm' onClick={onClose}>Cancel</Button>
+            <Button className='rounded-sm' 
               type="primary" 
               onClick={onSave}
               loading={loading}

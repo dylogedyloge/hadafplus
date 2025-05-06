@@ -4,7 +4,7 @@ import { Drawer, Button, Input, Space } from 'antd';
 const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) => {
   return (
     <Drawer
-      title="Add New Domain"
+      title="Add domain"
       placement="right"
       onClose={onClose}
       open={visible}
@@ -12,8 +12,8 @@ const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) 
       footer={
         <div style={{ textAlign: 'right' }}>
           <Space>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button 
+            <Button className='rounded-sm' onClick={onClose}>Cancel</Button>
+            <Button className='rounded-sm' 
               type="primary" 
               onClick={onAdd}
               loading={loading}

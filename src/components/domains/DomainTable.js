@@ -47,7 +47,7 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
       key: 'actions',
       render: (_, record) => (
         <Space>
-          <Button 
+          <Button className='rounded-sm' 
             type="primary" 
             size="small"
             onClick={() => onEdit(record)}
@@ -62,7 +62,7 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
             cancelText="No"
             okButtonProps={{ danger: true }}
           >
-            <Button type="default" danger size="small">
+            <Button className='rounded-sm' type="default" danger size="small">
               Delete
             </Button>
           </Popconfirm>

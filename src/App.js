@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, message, Input } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';  // Add SearchOutlined to imports
 import MainLayout from './components/Layout';
 import { 
   useGetDomainsQuery, 
@@ -92,7 +92,7 @@ function App() {
     <MainLayout>
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-4">
-          <Button 
+          <Button className='rounded-sm' 
             type="primary" 
             onClick={() => setDrawerVisible(true)}
             icon={<PlusOutlined />}
@@ -100,7 +100,8 @@ function App() {
             Add Domain
           </Button>
           <Input
-            placeholder="Search domains..."
+            placeholder="Search"
+            prefix={<SearchOutlined />}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="max-w-xs"
             allowClear
