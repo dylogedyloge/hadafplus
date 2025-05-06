@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, message, Input } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import MainLayout from './components/Layout';
 import { 
   useGetDomainsQuery, 
@@ -94,10 +95,11 @@ function App() {
           <Button 
             type="primary" 
             onClick={() => setDrawerVisible(true)}
+            icon={<PlusOutlined />}
           >
             Add Domain
           </Button>
-          <Input.Search
+          <Input
             placeholder="Search domains..."
             onChange={(e) => setSearchTerm(e.target.value)}
             className="max-w-xs"

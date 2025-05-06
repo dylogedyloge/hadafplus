@@ -9,17 +9,19 @@ const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) 
       onClose={onClose}
       open={visible}
       width={400}
-      extra={
-        <Space>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button 
-            type="primary" 
-            onClick={onAdd}
-            loading={loading}
-          >
-            Add
-          </Button>
-        </Space>
+      footer={
+        <div style={{ textAlign: 'right' }}>
+          <Space>
+            <Button onClick={onClose}>Cancel</Button>
+            <Button 
+              type="primary" 
+              onClick={onAdd}
+              loading={loading}
+            >
+              Add
+            </Button>
+          </Space>
+        </div>
       }
     >
       <Input

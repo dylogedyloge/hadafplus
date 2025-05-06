@@ -18,17 +18,19 @@ const EditDomainDrawer = ({
       onClose={onClose}
       open={visible}
       width={400}
-      extra={
-        <Space>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button 
-            type="primary" 
-            onClick={onSave}
-            loading={loading}
-          >
-            Save
-          </Button>
-        </Space>
+      footer={
+        <div style={{ textAlign: 'right' }}>
+          <Space>
+            <Button onClick={onClose}>Cancel</Button>
+            <Button 
+              type="primary" 
+              onClick={onSave}
+              loading={loading}
+            >
+              Save
+            </Button>
+          </Space>
+        </div>
       }
     >
       <div className="space-y-4">
