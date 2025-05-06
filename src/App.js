@@ -90,9 +90,9 @@ function App() {
 
   return (
     <MainLayout>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-4">
-          <Button className='rounded-sm' 
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-4">
+          <Button className='rounded-sm w-full sm:w-auto' 
             type="primary" 
             onClick={() => setDrawerVisible(true)}
             icon={<PlusOutlined />}
@@ -103,7 +103,7 @@ function App() {
             placeholder="Search"
             prefix={<SearchOutlined />}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-xs rounded-sm"
+            className="w-full sm:w-64 rounded-sm"
             allowClear
           />
         </div>

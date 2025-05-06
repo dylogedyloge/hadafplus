@@ -1,17 +1,22 @@
 import React from 'react';
 import { Table, Button, Tag, Space, Popconfirm } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 
 const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+
   const columns = [
     {
       title: 'Domain URLs',
       dataIndex: 'domain',
       key: 'domain',
+      ellipsis: true,
     },
     {
       title: 'Active Status',
       dataIndex: 'isActive',
       key: 'isActive',
+      responsive: ['sm'],
       render: (active) => (
         <Tag color={active ? 'green' : 'red'}>
           {active ? 'Active' : 'Inactive'}
@@ -22,6 +27,7 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
       title: 'Verification Status',
       dataIndex: 'status',
       key: 'status',
+      responsive: ['md'],
       render: (status) => {
         const colors = {
           verified: 'green',
@@ -40,16 +46,17 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
       title: 'Created At',
       dataIndex: 'createdDate',
       key: 'createdDate',
+      responsive: ['lg'],
       render: (date) => new Date(date).toLocaleDateString()
     },
     {
       title: 'Actions',
       key: 'actions',
       render: (_, record) => (
-        <Space>
+        <Space size="small" wrap>
           <Button className='rounded-sm' 
             type="primary" 
-            size="small"
+            size={isMobile ? 'small' : 'middle'}
             onClick={() => onEdit(record)}
           >
             Edit
@@ -62,7 +69,12 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
             cancelText="No"
             okButtonProps={{ danger: true }}
           >
-            <Button className='rounded-sm' type="default" danger size="small">
+            <Button 
+              className='rounded-sm' 
+              type="default" 
+              danger 
+              size={isMobile ? 'small' : 'middle'}
+            >
               Delete
             </Button>
           </Popconfirm>
@@ -78,9 +90,12 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
       pagination={{ 
         pageSize: 10,
         className: 'rounded-sm',
+        size: isMobile ? 'small' : 'default'
       }}
       className="shadow-md rounded-sm"
       loading={isLoading}
+      scroll={{ x: true }}
+      size={isMobile ? 'small' : 'middle'}
     />
   );
 };

@@ -23,12 +23,13 @@ const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) 
   };
 
   return (
+    // Update the width prop
     <Drawer
       title="Add domain"
       placement="right"
       onClose={onClose}
       open={visible}
-      width={400}
+      width={window.innerWidth > 640 ? 400 : '100%'}
       footer={
         <div style={{ textAlign: 'right' }}>
           <Space>

@@ -32,12 +32,13 @@ const EditDomainDrawer = ({
   };
 
   return (
+    // Update the width prop
     <Drawer
       title="Edit domain"
       placement="right"
       onClose={onClose}
       open={visible}
-      width={400}
+      width={window.innerWidth > 640 ? 400 : '100%'}
       footer={
         <div style={{ textAlign: 'right' }}>
           <Space>
