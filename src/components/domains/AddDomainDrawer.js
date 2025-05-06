@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Drawer, Button, Input, Space, Alert } from 'antd';
+import { Drawer, Button, Input, Space, Alert, Select } from 'antd';
 
-const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) => {
+const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange, status, onStatusChange }) => {
   const [error, setError] = useState('');
 
   const isValidDomain = (domain) => {
@@ -53,16 +53,33 @@ const AddDomainDrawer = ({ visible, onClose, onAdd, loading, value, onChange }) 
           className="mb-4"
         />
       )}
-      <Input
-        placeholder="Enter domain URL (e.g., example.com)"
-        value={value}
-        onChange={(e) => {
-          onChange(e);
-          setError('');
-        }}
-        status={error ? 'error' : ''}
-        className="mb-4"
-      />
+      <div className="space-y-4">
+        <div>
+          <label className="block mb-2">Domain URL</label>
+          <Input
+            placeholder="Enter domain URL (e.g., example.com)"
+            value={value}
+            onChange={(e) => {
+              onChange(e);
+              setError('');
+            }}
+            status={error ? 'error' : ''}
+            className="mb-4"
+          />
+        </div>
+        <div>
+          <label className="block mb-2">Verification Status</label>
+          <Select
+            value={status}
+            onChange={onStatusChange}
+            className="w-full"
+          >
+            <Select.Option value="pending">Pending</Select.Option>
+            <Select.Option value="verified">Verified</Select.Option>
+            <Select.Option value="rejected">Rejected</Select.Option>
+          </Select>
+        </div>
+      </div>
     </Drawer>
   );
 };

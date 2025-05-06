@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, Input, Switch, Space, Alert } from 'antd';
+import { Drawer, Button, Input, Switch, Space, Alert, Select } from 'antd';
 
 const EditDomainDrawer = ({ 
   visible, 
@@ -9,7 +9,9 @@ const EditDomainDrawer = ({
   domainUrl, 
   onDomainChange,
   isActive,
-  onActiveChange 
+  onActiveChange,
+  status,
+  onStatusChange 
 }) => {
   const [error, setError] = useState('');
 
@@ -81,6 +83,18 @@ const EditDomainDrawer = ({
             checked={isActive}
             onChange={onActiveChange}
           />
+        </div>
+        <div>
+          <label className="block mb-2">Verification Status</label>
+          <Select
+            value={status}
+            onChange={onStatusChange}
+            className="w-full"
+          >
+            <Select.Option value="pending">Pending</Select.Option>
+            <Select.Option value="verified">Verified</Select.Option>
+            <Select.Option value="rejected">Rejected</Select.Option>
+          </Select>
         </div>
       </div>
     </Drawer>

@@ -21,6 +21,8 @@ function App() {
   const [editingDomain, setEditingDomain] = useState(null);
   const [editDomainUrl, setEditDomainUrl] = useState('');
   const [editIsActive, setEditIsActive] = useState(true);
+  const [editStatus, setEditStatus] = useState('pending');
+  const [newStatus, setNewStatus] = useState('pending');
 
   const debouncedSearchTerm = useDebounce(searchTerm);
   const { data: domains, isLoading } = useGetDomainsQuery();
@@ -57,6 +59,7 @@ function App() {
     setEditingDomain(record);
     setEditDomainUrl(record.domain);
     setEditIsActive(record.isActive);
+    setEditStatus(record.status);
     setEditDrawerVisible(true);
   };
 
@@ -70,7 +73,8 @@ function App() {
       await updateDomain({
         id: editingDomain.id,
         domain: editDomainUrl,
-        isActive: editIsActive
+        isActive: editIsActive,
+        status: editStatus
       }).unwrap();
       message.success('Domain updated successfully');
       setEditDrawerVisible(false);
@@ -122,6 +126,8 @@ function App() {
           loading={isAdding}
           value={newDomain}
           onChange={(e) => setNewDomain(e.target.value)}
+          status={newStatus}
+          onStatusChange={setNewStatus}
         />
 
         <EditDomainDrawer 
@@ -133,6 +139,8 @@ function App() {
           onDomainChange={(e) => setEditDomainUrl(e.target.value)}
           isActive={editIsActive}
           onActiveChange={setEditIsActive}
+          status={editStatus}
+          onStatusChange={setEditStatus}
         />
       </div>
     </MainLayout>
