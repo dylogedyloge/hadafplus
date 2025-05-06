@@ -75,8 +75,11 @@ const DomainTable = ({ domains, isLoading, onEdit, onDelete }) => {
     <Table 
       dataSource={domains} 
       columns={columns} 
-      pagination={{ pageSize: 10 }}
-      className="shadow-md"
+      pagination={{ 
+        pageSize: 10,
+        className: 'rounded-sm',
+      }}
+      className="shadow-md rounded-sm"
       loading={isLoading}
     />
   );

@@ -103,7 +103,7 @@ function App() {
             placeholder="Search"
             prefix={<SearchOutlined />}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="max-w-xs"
+            className="max-w-xs rounded-sm"
             allowClear
           />
         </div>
