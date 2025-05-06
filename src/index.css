@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* This will ensure Ant Design components also use Montserrat */
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-drawer-title,
+.ant-table,
+.ant-tag,
+.ant-alert {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
