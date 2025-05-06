@@ -1,5 +1,5 @@
-import React from 'react';
-import { Drawer, Button, Input, Switch, Space } from 'antd';
+import React, { useState } from 'react';
+import { Drawer, Button, Input, Switch, Space, Alert } from 'antd';
 
 const EditDomainDrawer = ({ 
   visible, 
@@ -11,6 +11,26 @@ const EditDomainDrawer = ({
   isActive,
   onActiveChange 
 }) => {
+  const [error, setError] = useState('');
+
+  const isValidDomain = (domain) => {
+    const domainRegex = /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+    return domainRegex.test(domain);
+  };
+
+  const handleSave = () => {
+    if (!domainUrl.trim()) {
+      setError('Please enter a domain');
+      return;
+    }
+    if (!isValidDomain(domainUrl.trim())) {
+      setError('Please enter a valid domain (e.g., example.com)');
+      return;
+    }
+    setError('');
+    onSave();
+  };
+
   return (
     <Drawer
       title="Edit domain"
@@ -24,7 +44,7 @@ const EditDomainDrawer = ({
             <Button className='rounded-sm' onClick={onClose}>Cancel</Button>
             <Button className='rounded-sm' 
               type="primary" 
-              onClick={onSave}
+              onClick={handleSave}
               loading={loading}
             >
               Save
@@ -34,12 +54,24 @@ const EditDomainDrawer = ({
       }
     >
       <div className="space-y-4">
+        {error && (
+          <Alert
+            message={error}
+            type="error"
+            showIcon
+            className="mb-4"
+          />
+        )}
         <div>
           <label className="block mb-2">Domain URL</label>
           <Input
             placeholder="Enter domain URL"
             value={domainUrl}
-            onChange={onDomainChange}
+            onChange={(e) => {
+              onDomainChange(e);
+              setError('');
+            }}
+            status={error ? 'error' : ''}
           />
         </div>
         <div>
